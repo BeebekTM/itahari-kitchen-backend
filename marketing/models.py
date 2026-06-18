@@ -79,3 +79,61 @@ class Gallery(models.Model):
 
     def __str__(self):
         return self.category
+    
+class Partner(models.Model):
+    name = models.CharField(max_length=100)
+    type = models.CharField(max_length=100)
+    logo = models.ImageField(upload_to='Media/Partner')
+    createdAt = models.DateTimeField(default=now)
+    updatedAt = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        verbose_name = "Partner"
+        verbose_name_plural = "Partner"
+
+    def __str__(self):
+        return self.name
+        
+class Client(models.Model):
+    name = models.CharField(max_length=100)
+    type = models.CharField(max_length=100)
+    logo = models.ImageField(upload_to='Media/Clients')
+    createdAt = models.DateTimeField(default=now)
+    updatedAt = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        verbose_name = "Clients"
+        verbose_name_plural = "Clients"
+
+    def __str__(self):
+        return self.name
+        
+
+class Offer(models.Model):
+    title = models.CharField(max_length=100)
+    Description = models.TextField()
+    validDate = models.DateField()
+    offerImage = models.ImageField(upload_to='Media/Offer')
+    createdAt = models.DateTimeField(default=now)
+    updatedAt = models.DateTimeField(auto_now=True)
+
+    class Meta: 
+        verbose_name = "Offer"
+        verbose_name_plural = "Offer" 
+
+    def __str__(self):
+        return self.title
+        
+
+class OfferPamphlets(models.Model):
+    name = models.CharField(max_length=100)
+    link = models.TextField()
+    orderPriority = models.OrderBy()
+    image = models.ImageField(upload_to='Media/OfferPamphlets')
+
+    class Meta:
+        verbose_name = "Offer Pamphlets"
+        verbose_name_plural = "Offer Pamphlets"
+
+    def __str__(self):
+        return self.name

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Blog, BlogCategory, Gallery, GalleryCategory
+from .models import Blog, BlogCategory, Gallery, GalleryCategory, Partner, Client, Offer
 
 # Register your models here.
 class BlogCategoryAdmin(admin.ModelAdmin):
@@ -47,3 +47,20 @@ class GalleryAdmin(admin.ModelAdmin):
 
 admin.site.register(Gallery, GalleryAdmin)
   
+
+class PartnerAdmin(admin.ModelAdmin):
+     list_display = ('id','name','type','logo')
+
+admin.site.register(Partner, PartnerAdmin)
+
+
+class ClientAdmin(admin.ModelAdmin):
+     list_display = ('id','name','type','logo')
+
+admin.site.register(Client, ClientAdmin)
+
+
+class OfferAdmin(admin.ModelAdmin):
+     list_display = ('id','title','Description','validDate','offerImage')
+
+admin.site.register(Offer, OfferAdmin)

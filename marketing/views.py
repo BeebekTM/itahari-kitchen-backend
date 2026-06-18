@@ -1,6 +1,6 @@
 from rest_framework import viewsets
-from .models import Blog, BlogCategory, GalleryCategory, Gallery
-from .serializers import BlogSerializer, BlogCategorySerializer, GalleryCategorySerializer, GallerySerializer
+from .models import Blog, BlogCategory, GalleryCategory, Gallery, Partner, Client, Offer
+from .serializers import BlogSerializer, BlogCategorySerializer, GalleryCategorySerializer, GallerySerializer, PartnerSerializer, ClientSerializer, OfferSerializer
 # Create your views here.
 
 class BlogCategoryViewSet(viewsets.ModelViewSet):
@@ -18,3 +18,15 @@ class GalleryCategoryViewSet(viewsets.ModelViewSet):
 class GalleryViewsSet(viewsets.ModelViewSet):
     queryset = Gallery.objects.all().order_by('-id')
     serializer_class = GallerySerializer
+
+class PartnerViewSet(viewsets.ModelViewSet):
+    queryset = Partner.objects.all().order_by('-id')
+    serializer_class = PartnerSerializer
+
+class ClientViewSet(viewsets.ModelViewSet):
+    queryset = Client.objects.all().order_by('-id')
+    serializer_class = ClientSerializer
+
+class OfferViewSet(viewsets.ModelViewSet):
+    queryset = Offer.objects.all().order_by('-id')
+    serializer_class = OfferSerializer
