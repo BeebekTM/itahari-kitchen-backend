@@ -123,12 +123,12 @@ class Offer(models.Model):
 
     def __str__(self):
         return self.title
-        
+
 
 class OfferPamphlets(models.Model):
     name = models.CharField(max_length=100)
     link = models.TextField()
-    orderPriority = models.OrderBy()
+    orderPriority = models.IntegerField()
     image = models.ImageField(upload_to='Media/OfferPamphlets')
 
     class Meta:
@@ -137,3 +137,18 @@ class OfferPamphlets(models.Model):
 
     def __str__(self):
         return self.name
+
+class Testimonial(models.Model):
+    authorName = models.CharField(max_length=100)
+    role = models.CharField(max_length=100)
+    testimonialContent = models.TextField()
+    profileImage = models.ImageField(upload_to='Media/Testimonial')
+    createdAt = models.DateTimeField(default=now)
+    updatedAt = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        verbose_name = "Testimonial"
+        verbose_name_plural = "Testimonial"
+
+    def __str__(self):
+        return self.authorName

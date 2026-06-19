@@ -1,5 +1,6 @@
 from django.contrib import admin
-from .models import Blog, BlogCategory, Gallery, GalleryCategory, Partner, Client, Offer
+from .models import (Blog, BlogCategory, Gallery, GalleryCategory, Partner,
+                     Client, Offer, OfferPamphlets, Testimonial)
 
 # Register your models here.
 class BlogCategoryAdmin(admin.ModelAdmin):
@@ -64,3 +65,15 @@ class OfferAdmin(admin.ModelAdmin):
      list_display = ('id','title','Description','validDate','offerImage')
 
 admin.site.register(Offer, OfferAdmin)
+
+
+class OfferPamphletsAdmin(admin.ModelAdmin):
+    list_display = ('id','name','link','orderPriority','image')
+
+admin.site.register(OfferPamphlets, OfferPamphletsAdmin)
+
+
+class TestimonialAdmin(admin.ModelAdmin):
+    list_display = ('id','authorName','role','testimonialContent','profileImage')
+
+admin.site.register(Testimonial, TestimonialAdmin)

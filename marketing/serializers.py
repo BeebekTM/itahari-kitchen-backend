@@ -1,5 +1,6 @@
 from rest_framework import serializers
-from .models import Blog, BlogCategory, Gallery, GalleryCategory, Partner, Client, Offer
+from .models import (Blog, BlogCategory, Gallery, GalleryCategory, Partner, Client,
+                     Offer, OfferPamphlets, Testimonial)
 
 class BlogCategorySerializer(serializers.ModelSerializer):
     class Meta:
@@ -38,4 +39,14 @@ class ClientSerializer(serializers.ModelSerializer):
 class OfferSerializer(serializers.ModelSerializer):
     class Meta:
         model = Offer
+        fields = '__all__'
+
+class OfferPamphletsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = OfferPamphlets
+        fields = '__all__'
+
+class TestimonialSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Testimonial
         fields = '__all__'
