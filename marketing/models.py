@@ -152,3 +152,28 @@ class Testimonial(models.Model):
 
     def __str__(self):
         return self.authorName
+
+class Order(models.Model):
+    fullName = models.CharField(max_length=100)
+    email = models.EmailField()
+    address = models.TextField()
+    phoneNumber = models.CharField(max_length=20)
+    orderNote = models.TextField(blank=True, null=True)
+    total_amount = models.DecimalField(max_digits=10, decimal_places=2, default=0)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"Order #{self.id} - {self.fullName}"
+
+
+class OrderItem(models.Model):
+    order = models.ForeignKey(
+        Order, related_name="items", on_delete=models.CASCADE)
+
+    productName = models.CharField(max_length=255)
+    quantity = models.PositiveIntegerField(default=1)
+
+    price = models.DecimalField(max_digits=10,decimal_places=2)
+
+    def subtotal(self):
+        return self.quantity * self.price
