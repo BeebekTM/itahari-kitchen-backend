@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'website',
     'user',
 ]
+from datetime import timedelta
 
 JAZZMIN_SETTINGS = {
     "site_title": "My Project Admin",
