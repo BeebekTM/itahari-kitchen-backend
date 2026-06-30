@@ -1,6 +1,7 @@
 from rest_framework import viewsets
-from .models import Category, Brand, Product, ProductGallery
-from .serializers import (CategorySerializer, BrandSerializer, ProductSerializer, ProductGallerySerializer)
+from .models import Category, Brand, Product, ProductGallery, Order
+from .serializers import (CategorySerializer, BrandSerializer, ProductSerializer, ProductGallerySerializer,
+                          OrderSerializer)
 
 
 class CategoryViewSet(viewsets.ModelViewSet):
@@ -18,3 +19,7 @@ class ProductViewSet(viewsets.ModelViewSet):
 class ProductGalleryViewSet(viewsets.ModelViewSet):
     queryset = ProductGallery.objects.select_related('product').order_by('-id')
     serializer_class = ProductGallerySerializer
+
+class OrderViewSet(viewsets.ModelViewSet):
+    queryset = Order.objects.prefetch_related("items").all()
+    serializer_class = OrderSerializer

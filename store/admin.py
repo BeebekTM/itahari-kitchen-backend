@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Category, Brand, Product, ProductGallery
+from .models import Category, Brand, Product, ProductGallery, Order, OrderItem
 
 
 class ProductGalleryInline(admin.TabularInline):
@@ -63,3 +63,39 @@ class ProductGalleryAdmin(admin.ModelAdmin):
         'product__productName',
     )
 admin.site.register(ProductGallery, ProductGalleryAdmin)
+
+
+class OrderItemInline(admin.TabularInline):
+    model = OrderItem
+    extra = 0
+
+class OrderAdmin(admin.ModelAdmin):
+    list_display = (
+        "id",
+        "fullName",
+        "email",
+        "phoneNumber",
+        "total_amount",
+        "created_at",
+    )
+    search_fields = (
+        "fullName",
+        "email",
+        "phoneNumber",
+    )
+    readonly_fields = ("created_at",)
+    inlines = [OrderItemInline]
+
+admin.site.register(Order, OrderAdmin)
+
+
+class OrderItemAdmin(admin.ModelAdmin):
+    list_display = (
+        "id",
+        "order",
+        "productName",
+        "quantity",
+        "price",
+    )
+    search_fields = ("productName",)
+admin.site.register(OrderItem, OrderItemAdmin)

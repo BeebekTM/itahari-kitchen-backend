@@ -1,8 +1,7 @@
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 from .views import (BlogCategoryViewSet, BlogViewsSet, GalleryViewsSet, GalleryCategoryViewSet,
-                    PartnerViewSet, ClientViewSet, OfferViewSet, OfferPamphletsViewSet, TestimonialViewSet,
-                    OrderViewSet)
+                    PartnerViewSet, ClientViewSet, OfferViewSet, OfferPamphletsViewSet, TestimonialViewSet)
 
 router = DefaultRouter()
 
@@ -15,7 +14,6 @@ router.register(r'clients', ClientViewSet)
 router.register(r'offers', OfferViewSet)
 router.register(r'offerpamphlets', OfferPamphletsViewSet)
 router.register(r'testimonials', TestimonialViewSet)
-router.register(r'orders', OrderViewSet)
 urlpatterns = [
     path('', include(router.urls)),
 ]

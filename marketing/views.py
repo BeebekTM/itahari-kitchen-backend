@@ -1,9 +1,9 @@
 from rest_framework import viewsets
 from .models import (Blog, BlogCategory, GalleryCategory, Gallery, Partner, Client, Offer,
-                     OfferPamphlets, Testimonial, Order)
+                     OfferPamphlets, Testimonial)
 from .serializers import (BlogSerializer, BlogCategorySerializer, GalleryCategorySerializer,
                           GallerySerializer, PartnerSerializer, ClientSerializer, OfferSerializer,
-                          OfferPamphletsSerializer, TestimonialSerializer, OrderSerializer)
+                          OfferPamphletsSerializer, TestimonialSerializer)
 # Create your views here.
 
 class BlogCategoryViewSet(viewsets.ModelViewSet):
@@ -43,6 +43,3 @@ class TestimonialViewSet(viewsets.ModelViewSet):
     serializer_class = TestimonialSerializer
 
 
-class OrderViewSet(viewsets.ModelViewSet):
-    queryset = Order.objects.prefetch_related("items").all()
-    serializer_class = OrderSerializer
